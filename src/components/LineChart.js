@@ -26,15 +26,12 @@ class LineChart extends Component {
   }
 
   render() {
-    const { x, y, height, data } = this.props;    
+    const { x, y, height, data, dataline } = this.props;    
     const { xScale, yScale } = this.state;
     console.log(this.valueLine(data))
     return (
       <g transform={`translate(${x}, ${y})`}>
-        <path 
-        d={this.valueLine(data)}     
-        style={{fill:'none',strokeWidth:2, stroke: "red"}}
-        />
+        { dataline({d: this.valueLine(data)})}
         <Axis x={0} y={0} type={"Left"} label="Y" scale={yScale} />
         <Axis x={0} y={height} type={"Bottom"} label="x" scale={xScale} />
       </g>
