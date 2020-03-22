@@ -55,7 +55,6 @@ function withResponsiveContainer(
     render() {
       const { width, height } = this.state;
       // const margin = { top: 50, right: 50, bottom: 50, left: 50 };
-      console.log(width, height)
       return (
         <ContainerBasic ref={this.containerRef}>
           <Svg width={width} height={height}>
