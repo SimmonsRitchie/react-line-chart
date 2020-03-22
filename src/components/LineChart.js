@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import * as d3 from "d3";
 import Axis from "./Axis"
+import withResponsiveContainer from "./hoc/withResponsiveContainer"
+
+
 
 class LineChart extends Component {
   state = {
@@ -42,4 +45,7 @@ class LineChart extends Component {
   }
 }
 
-export default LineChart;
+const ResponsiveLineChart = withResponsiveContainer(LineChart)
+
+
+export default ResponsiveLineChart;
