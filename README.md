@@ -1,8 +1,6 @@
-### React-D3 boilerplate playground
+### React-D3 Line Chart
 
-A simple boilerplate for messing around with React and D3.
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A simple line chart built with React and D3.
 
 ## Available Scripts
 
