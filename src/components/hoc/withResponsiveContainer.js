@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Svg from "../Svg";
-import ContainerBasic from "../ContainerBasic";
+import ChartContainer from "../ChartContainer";
 import { throttle } from "throttle-debounce";
 
 function withResponsiveContainer(
@@ -56,7 +56,7 @@ function withResponsiveContainer(
       const { width, height } = this.state;
       // const margin = { top: 50, right: 50, bottom: 50, left: 50 };
       return (
-        <ContainerBasic ref={this.containerRef}>
+        <ChartContainer ref={this.containerRef}>
           <Svg width={width} height={height}>
             <ChartComponent
               x={margin.right}
@@ -66,7 +66,7 @@ function withResponsiveContainer(
               {...this.props}
             />
           </Svg>
-        </ContainerBasic>
+        </ChartContainer>
       );
     }
   };

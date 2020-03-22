@@ -9,13 +9,20 @@ class LineChart extends Component {
   state = {
     xScale: d3
       .scaleLinear()
-      .domain(d3.extent(this.props.data[0], d => d.x))
+      .domain(this.getExtent(d => d.x))
       .range([0, this.props.width]),
     yScale: d3
       .scaleLinear()
-      .domain([0, 1])
+      .domain(this.getExtent(d => d.y))
       .range([this.props.height, 0]),
   };
+
+  getExtent(accessorFunc) {
+    // Flattens an array of arrays
+    const arr = [].concat.apply([], this.props.data);
+    return d3.extent(arr, accessorFunc)
+
+  }
 
   valueLine = d3.line()
     .x(d => this.state.xScale(d.x))
