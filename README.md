@@ -1,6 +1,8 @@
 ### React-D3 Line Chart
 
-A simple line chart built with React and D3.
+A responsive multi-series line chart built with React and D3.
+
+This chart uses Swizec Teller's 'integrated' approach to combining D3 and React.
 
 ## Available Scripts
 
