@@ -3,12 +3,11 @@ import Svg from "../Svg";
 import Container from "../Container";
 import { throttle } from "throttle-debounce";
 
-function withResponsiveContainer(ChartComponent) {
+function withResponsiveContainer(WrappedChart) {
   /*
-   * A HOC that takes a function a component and wraps it with an SVG and
-   * makes it responsive responsive container
+   * A HOC that takes a function a component and wraps it with an svg element and
+   * a responsive container
    *
-   * The D3render function returns what we want to render with d3
    */
   return class ResponsiveContainer extends Component {
     constructor(props) {
@@ -37,7 +36,6 @@ function withResponsiveContainer(ChartComponent) {
 
     resize() {
       const containerEl = this.containerRef.current;
-      console.log(containerEl)
       const width = containerEl.getBoundingClientRect().width;
       const height = width * 0.7; // We set height as a ratio of width
       this.setState({
@@ -52,7 +50,7 @@ function withResponsiveContainer(ChartComponent) {
       return (
         <Container ref={this.containerRef}>
           <Svg width={width} height={height}>
-            <ChartComponent
+            <WrappedChart
               x={margin.right}
               y={margin.top}
               height={height - (margin.top + margin.bottom)}

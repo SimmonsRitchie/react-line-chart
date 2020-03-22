@@ -26,13 +26,3 @@ class App extends Component {
 }
 
 export default App;
-
-
-// <LineChart
-// x={margin.right}
-// y={margin.top}
-// height={height - (margin.top + margin.bottom)}
-// width={width - (margin.left + margin.right)}
-// data={[data, data2, data3]}
-// dataline={({ d, idx }) => <Line d={d} key={idx} />}
-// />
