@@ -6,7 +6,7 @@ class LineChart extends Component {
   state = {
     xScale: d3
       .scaleLinear()
-      .domain(d3.extent(this.props.data, d=>d.x))
+      .domain(d3.extent(this.props.data[0], d => d.x))
       .range([0, this.props.width]),
     yScale: d3
       .scaleLinear()
@@ -28,10 +28,14 @@ class LineChart extends Component {
   render() {
     const { x, y, height, data, dataline } = this.props;    
     const { xScale, yScale } = this.state;
-    console.log(this.valueLine(data))
+    console.log(data)
     return (
       <g transform={`translate(${x}, ${y})`}>
-        { dataline({d: this.valueLine(data)})}
+        { data.map((item) => {
+          console.log(item)
+          console.log(this.valueLine(item))
+          return dataline({d: this.valueLine(item)})
+        })}
         <Axis x={0} y={0} type={"Left"} label="Y" scale={yScale} />
         <Axis x={0} y={height} type={"Bottom"} label="x" scale={xScale} />
       </g>
