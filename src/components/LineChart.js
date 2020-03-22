@@ -19,6 +19,8 @@ class LineChart extends Component {
     .y(d => this.state.yScale(d.y))
 
   static getDerivedStateFromProps(props, state) {
+    // We use getDerivedStateFromProps to ensure that our scales update properly on re-renders
+    // getDerivedStateFromProps is generally discouraged because it can hurt performance. We use it with caution.
     let { xScale, yScale } = state;
     xScale.range([0, props.width]);
     yScale.range([props.height, 0]);

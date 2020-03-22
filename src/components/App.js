@@ -15,9 +15,6 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    /* We use throttle to minimize the number of times we check window size
-    this is important for performance
-    */
     this.containerRef = React.createRef();
     this.state = {
       width: 0,
@@ -25,6 +22,7 @@ class App extends Component {
     };
     //! Important: must bind otherwise ref will be inacessible on event listener calls
     this.resize = this.resize.bind(this); 
+    // * We use throttle to improve performance
     this.throttledHandleWindowResize = throttle(300, this.resize);
   }
 
@@ -43,7 +41,7 @@ class App extends Component {
       const containerEl = this.containerRef.current;
       console.log(containerEl)
       const width = containerEl.getBoundingClientRect().width;
-      const height = width * 0.7;
+      const height = width * 0.7; // We set height as a ratio of width
       this.setState({
         width,
         height
