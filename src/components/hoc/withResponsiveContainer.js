@@ -1,13 +1,21 @@
 import React, { Component } from "react";
 import Svg from "../Svg";
-import Container from "../Container";
+import ContainerBasic from "../ContainerBasic";
 import { throttle } from "throttle-debounce";
 
-function withResponsiveContainer(WrappedChart) {
+function withResponsiveContainer(
+  ChartComponent, 
+  {margin={
+    top: 50, 
+    right: 50, 
+    bottom: 50, 
+    left: 50 
+  }}={}) {
   /*
-   * A HOC that takes a function a component and wraps it with an svg element and
-   * a responsive container
+   * A HOC that wraps a chart component with an svg element and a responsive container
    *
+   * optional params:
+   * @margin: Object in form {top: int, right: int, bottom: int, left: int}
    */
   return class ResponsiveContainer extends Component {
     constructor(props) {
@@ -46,11 +54,12 @@ function withResponsiveContainer(WrappedChart) {
 
     render() {
       const { width, height } = this.state;
-      const margin = { top: 50, right: 50, bottom: 50, left: 50 };
+      // const margin = { top: 50, right: 50, bottom: 50, left: 50 };
+      console.log(width, height)
       return (
-        <Container ref={this.containerRef}>
+        <ContainerBasic ref={this.containerRef}>
           <Svg width={width} height={height}>
-            <WrappedChart
+            <ChartComponent
               x={margin.right}
               y={margin.top}
               height={height - (margin.top + margin.bottom)}
@@ -58,7 +67,7 @@ function withResponsiveContainer(WrappedChart) {
               {...this.props}
             />
           </Svg>
-        </Container>
+        </ContainerBasic>
       );
     }
   };

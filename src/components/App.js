@@ -19,6 +19,7 @@ class App extends Component {
         <ResponsiveLineChart
           data={[data, data2, data3]}
           dataline={({ d, idx }) => <Line d={d} key={idx} />}
+          test={"hello?"}
         />
       </Container>
     );
