@@ -6,13 +6,12 @@ import * as d3 from "d3";
 import Container from "./Container";
 
 const generateData = () => {
+  // * Generates an array of arrays of {x, y} objects 
+  // * Each represents a line for a multi-series line chart
   return d3.range(5).map(_ => {
     return d3.range(20).map((_, idx) => ({ x: idx, y: Math.random() }));
   })
 }
-
-// * Generates an array of arrays of {x, y} objects 
-// * Each represents a line for a multi-series line chart
 
 class App extends Component {
   state = {
@@ -25,7 +24,6 @@ class App extends Component {
   }
 
   render() {
-
     return (
       <Container>
         <ResponsiveLineChart
