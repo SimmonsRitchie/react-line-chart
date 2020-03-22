@@ -28,13 +28,10 @@ class LineChart extends Component {
   render() {
     const { x, y, height, data, dataline } = this.props;    
     const { xScale, yScale } = this.state;
-    console.log(data)
     return (
       <g transform={`translate(${x}, ${y})`}>
-        { data.map((item) => {
-          console.log(item)
-          console.log(this.valueLine(item))
-          return dataline({d: this.valueLine(item)})
+        { data.map((item, idx) => {
+          return dataline({d: this.valueLine(item), idx})
         })}
         <Axis x={0} y={0} type={"Left"} label="Y" scale={yScale} />
         <Axis x={0} y={height} type={"Bottom"} label="x" scale={xScale} />

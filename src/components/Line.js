@@ -13,7 +13,6 @@ class Line extends React.Component {
   }
 
   highlight = () => {
-    console.log('Highlight!')
     this.setState({ highlight: true });
   };
 
