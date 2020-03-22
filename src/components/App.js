@@ -3,9 +3,9 @@ import '../styles/App.css';
 
 function App() {
   return (
-    <div className="App">
-      D3 playground
-    </div>
+    <svg width={800} height={800}>
+      {/* Insert components here */}
+    </svg>
   );
 }
 
