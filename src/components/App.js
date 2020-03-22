@@ -6,9 +6,11 @@ import * as d3 from "d3";
 
 import Container from "./Container";
 
-const data = d3.range(20).map((_, idx) => ({ x: idx, y: Math.random() }));
-const data2 = d3.range(20).map((_, idx) => ({ x: idx, y: Math.random() }));
-const data3 = d3.range(20).map((_, idx) => ({ x: idx, y: Math.random() }));
+// * Generates an array of arrays of {x, y} objects 
+// * Each represents a line for a multi-series line chart
+const data = d3.range(5).map(_ => {
+  return d3.range(20).map((_, idx) => ({ x: idx, y: Math.random() }));
+})
 
 class App extends Component {
 
@@ -17,8 +19,8 @@ class App extends Component {
     return (
       <Container>
         <ResponsiveLineChart
-          data={[data, data2, data3]}
-          dataline={({ d, idx }) => <Line d={d} key={idx} />}
+          data={data}
+          dataline={({ d, idx }) => <Line d={d} seriesNo={idx} key={idx} />}
           test={"hello?"}
         />
       </Container>
